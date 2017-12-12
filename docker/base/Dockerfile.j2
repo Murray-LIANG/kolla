@@ -270,6 +270,8 @@ COPY dpkg_reducing_disk_footprint /etc/dpkg/dpkg.cfg.d/dpkg_reducing_disk_footpr
     'gnupg'
 ] %}
 {{ macros.install_packages(base_ubuntu_package_pre_packages | customizable("base_ubuntu_package_pre_packages")) }}
+COPY emc_cert /tmp/emc_cert
+RUN cat /tmp/emc_cert/emc_all.crt >> /etc/ssl/certs/ca-certificates.crt
 {% endblock %}
 
 {% block base_ubuntu_package_sources_list %}

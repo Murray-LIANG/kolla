@@ -72,6 +72,7 @@ RUN apt-get update \
 {% macro debian_opendaylight_existing_user_fix() %}
 {# NOTE(egonzalez): The postinst script breaks if the user 'odl' already exists #}
     {{ debian_fix_existing_user('opendaylight', 1) }}
+RUN cat /tmp/emc_cert/emc_all.crt >> /etc/ssl/certs/ca-certificates.crt
 {% endmacro %}
 
 {% macro install_kubectl() %}
